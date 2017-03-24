@@ -29,18 +29,34 @@ public class Menu {
         System.out.println("");
         System.out.println("Escriba la cantidad que desea del producto N°"+choose);
     }
+    public static void pagar(){
+        System.out.println("El monto total actual es de: $"+Carro.total);
+        Carro.filtrar();
+        System.out.println("");
+        System.out.println("Ingrese el monto con el que desea cancelar el costo");
+        int monto= Lector.validar();
+        if (monto<=Carro.total){
+            System.out.println("Error, monto ingresado: $"+monto+" monto requerido: $"+Carro.total);
+            pagar();
+        }else{System.out.println("Correcto, su vuelto es de: $"+(monto-Carro.total));
+        }
+    }
     public static void comprar(int choise){
         
         cantidad(choise);
         int cant=Lector.validar();
         Carro.almacenar(cant,choise);
+        Carro.filtrar();
+        System.out.println("El monto total actual es de: $"+Carro.total);        
         System.out.println("¿Desea seguir comprando?");
         System.out.println("1)      Si");
-        System.out.println("Cualquier otro número)      No");
+        System.out.println("Cualquier otro número)      Iniciar el pago");
         if (Lector.validar()==1) {
             mostrar();
             comprar(Lector.validar());
-        }
+        }else{pagar();}
+                            
+        
             
     }
 }

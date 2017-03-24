@@ -18,7 +18,7 @@ public class Main {
         // TODO code application logic here
         Menu.mostrar();
         Menu.comprar(Lector.validar());
-        Carro.filtrar();
+        //Carro.filtrar();
         
         
         /*testCalculator.resta();
